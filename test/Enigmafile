@@ -1,0 +1,11 @@
+template_path: .enigma
+template_file: Templatefile
+output_path: Polaris/Source/Encrypted
+output_file: Keys.swift
+environment: prod
+categories:
+- id: Tealium
+  items:
+  - key: some.aws.sm.key
+    property: key
+    
