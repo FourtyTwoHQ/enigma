@@ -1,4 +1,3 @@
-require 'git'
 require 'rainbow'
 require 'enigma/config'
 require 'enigma/logger'
