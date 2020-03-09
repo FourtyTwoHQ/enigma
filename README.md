@@ -2,6 +2,10 @@
 
 Enigma is a Ruby gem that fetches your application's passwords from AWS Secrets Manager and builds a file containing them using a `Templatefile` as the guide. This results in a simple and platform-agnostic approach to rendering your application password in to a compilable file.
 
+## Installation
+
+`gem install enigma-gen`
+
 ## Enigmafile
 
 The Enigmafile is used to tell Enigma what to do. It is a YAML file with a basic structure and contains the following properties:
@@ -116,3 +120,25 @@ secrets:
 The `property_name` attribute of the `item` only pertains to how the item is rendered in the template. Specifically, it is the name of the property that will be used to hold the secret value. You can give the `property_name` attribute any value you would like.
 
 **Remember**: try to prefix all of your secrets with your environment in  Secrets Manager, and use the `environment` attribute of the `Enigmafile` to automatically append the `environment` to every secret fetch.
+
+## Usage
+
+Once the gem is installed, simply running `enigma exec` is enough to get you started. However, should you want to pass in specific command line options instead of specifying values in your `Enigmafile`, you can do that as well.
+
+```bash
+--access_key_id [String] Your AWS Access Key ID
+```
+```bash
+--secret_access_key [String] Your AWS Secret Access Key
+```
+```bash
+--aws_region [String] Your AWS Region
+```
+```bash
+--environment [String] Your specified secret environment
+```
+```bash
+--config [String] Path to your Enigmafile
+```
+
+**Note**: Parameters passed in via CLI take precedence over those listed in your `Enigmafile`.

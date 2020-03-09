@@ -19,6 +19,8 @@ module Enigma
     desc 'exec --access_key_id <aws access key id> --secret_access_key <aws secret access key> --config <path to Enigmafile>', 'Pulls the secrets from your AWS Secrets Manager instance and builds a file from template'
     option :access_key_id, aliases: :b, type: :string
     option :secret_access_key, aliases: :s, type: :string
+    option :aws_region, aliases: :r, type: :string
+    option :environment, aliases: :e, type: :string
     option :config, aliases: :c, type: :string, default: "#{ENV['PWD']}/Enigmafile"
     option :working_directory, aliases: :d, type: :string, default: '.'
     def exec
@@ -36,14 +38,16 @@ module Enigma
       raise Thor::Error, Rainbow("secret_access_key cannot be nil").red if secret_access_key.nil?
       raise Thor::Error, Rainbow("secret_access_key cannot be empty").red if secret_access_key.empty?
 
-      aws_region = @config.aws_region
+      aws_region = @options[:aws_region] || @config.aws_region
       raise Thor::Error, Rainbow("aws_region cannot be nil").red if aws_region.nil?
       raise Thor::Error, Rainbow("aws_region cannot be empty").red if aws_region.empty?
+
+      environment = @options[:environment] || @config.environment
 
       client_config = Enigma::ClientConfig.new(:access_key_id => access_key_id,
                                                :secret_access_key => secret_access_key,
                                                :aws_region => aws_region,
-                                               :environment => @config.environment)
+                                               :environment => environment)
       @client = Enigma::Client.new(config: client_config)
 
       secret_list = []
