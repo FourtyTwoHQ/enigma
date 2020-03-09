@@ -1,4 +1,4 @@
-require 'enigma'
+require 'enigma/config'
 require 'minitest/autorun'
 
 class ConfigTest < MiniTest::Test
