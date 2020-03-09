@@ -1,6 +1,4 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __dir__)
-require 'enigma'
-require 'minitest/autorun'
+require File.join(__dir__, '..', 'test_helper')
 
 class ConfigTest < MiniTest::Test
   def test_parsesCorrectly

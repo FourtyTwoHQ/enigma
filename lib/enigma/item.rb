@@ -6,8 +6,8 @@ module Enigma
     attr_accessor :value
 
     def initialize(hash: Hash)
-      @key = hash[:key]
-      @property_name = hash[:property_name]
+      @key = hash['key']
+      @property_name = hash['property_name']
       @value = ''
     end
   end

@@ -37,3 +37,4 @@
 # Jetbrains
 .idea/
 .rakeTasks
+test/tests/.tmp
