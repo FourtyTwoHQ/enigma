@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'enigma'
+
+Enigma::CLI.start

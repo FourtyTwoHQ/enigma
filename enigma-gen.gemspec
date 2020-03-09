@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'enigma/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'enigma'
+  spec.name          = 'enigma-gen'
   spec.version       = Enigma::VERSION
   spec.authors       = ['Mat Cartmill']
   spec.email         = ['mat.cartmill@gmail.com']
@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug', '~> 3.7.0'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_runtime_dependency 'aws-sdk-secretsmanager', '~> 1.32.0'
+  spec.add_runtime_dependency 'json', '~> 2.3.0'
   spec.add_runtime_dependency 'rainbow', '~> 3.0.0'
   spec.add_runtime_dependency 'terminal-table', '~> 1.8.0'
+  spec.add_runtime_dependency 'thor', '~> 0.20.3'
 end

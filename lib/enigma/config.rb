@@ -3,21 +3,23 @@ require 'yaml'
 module Enigma
 
   class Config
-    attr_reader :output_path
-    attr_reader :output_file
-    attr_reader :template_path
-    attr_reader :template_file
+    attr_reader :access_key_id
+    attr_reader :secret_access_key
+    attr_reader :aws_region
     attr_reader :environment
-    attr_reader :apiKey
+    attr_reader :output_path
+    attr_reader :secrets
+    attr_reader :template_path
 
     def initialize(path: 'Enigmafile')
       config = YAML::load_file(path)
-      @output_path = config['output_path']
-      @output_file = config['output_file']
-      @template_file = config['template_file']
+      @access_key_id = config['access_key_id']
+      @secret_access_key = config['secret_access_key']
+      @aws_region = config['aws_region']
       @environment = config['environment']
-      @apiKey = config['apiKey']
-      @categories = Category.new(hash: config['categories'])
+      @output_path = config['output_path']
+      @secrets = config['secrets']
+      @template_path = config['template_path']
     end
   end
 
