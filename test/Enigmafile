@@ -1,8 +1,7 @@
-template_path: .enigma
-template_file: Templatefile
-output_path: Polaris/Source/Encrypted
-output_file: Keys.swift
+template_path: .enigma/Templatefile
+output_path: Polaris/Source/Encrypted/Keys.swift
 environment: prod
+allow_missing_items: true
 categories:
 - id: Tealium
   items:

@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'aws-sdk-secretsmanager', '~> 1.32.0'
   spec.add_runtime_dependency 'rainbow', '~> 3.0.0'
   spec.add_runtime_dependency 'terminal-table', '~> 1.8.0'
+  spec.add_runtime_dependency 'json', '~> 2.3.0'
 end

@@ -1,28 +1,58 @@
+require 'erb'
+require 'json'
+
 module Enigma
 
   class Runner
 
-    def initialize(name: String, options: Hash, driver: lambda)
-      @name = name
+    def initialize(options: Hash)
       @options = options
-      @driver = driver
     end
 
     def run
       begin
-        print_command_config(name: @name)
-
         raise Thor::Error, Rainbow("Cannot find Enigma at #{@options[:config]}").red unless File.exist?(@options[:config])
 
         @config = Enigma::Config.new(path: @options[:config])
-        bundle_id = @options[:bundle_id] || @config.bundles.first.id
 
-        print_enigma_config
+        api_key = @options[:api_key] || ENV[@config.api_key]
+        raise Thor::Error, Rainbow("api_key cannot be nil").red if api_key.nil?
+        raise Thor::Error, Rainbow("api_key cannot be empty").red if api_key.empty?
 
-        @apiKey = @options[:apiKey] || ENV[@config.apiKey]
-        raise Thor::Error, Rainbow("apiKey cannot be nil").red if @apiKey.nil?
-        raise Thor::Error, Rainbow("apiKey cannot be empty").red if @apiKey.empty?
+        aws_region = config.aws_region
+        raise Thor::Error, Rainbow("aws_region cannot be nil").red if api_key.nil?
+        raise Thor::Error, Rainbow("aws_region cannot be empty").red if api_key.empty?
 
+        client_config = Enigma::ClientConfig.new(:api_key => api_key,
+                                                 :aws_region => aws_region,
+                                                 :environment => config.environment)
+        @client = Enigma::Client.new(client_config)
+
+        category_list = []
+
+        categories = config.categories
+        categories.each do |c|
+          category = Enigma::Category.new(c)
+          item_list = []
+
+          secret = JSON.parse(@client.fetch_secret(secret_name: category.id))
+          category.items.each do |i|
+            item = Enigma::Item.new(i)
+
+            raise Thor::Error, Rainbow("Could not").red if secret[item.key].nil && !config.allow_missing_items
+
+            item.value = secret[item.key]
+            item_list.append(item)
+          end
+
+          category.items = item_list
+          category_list.append(category)
+        end
+
+        template = Enigma::Template.new(:categories => category_list,
+                                        :template_path => config.template_path,
+                                        :output_path => config.output_path)
+        template.build
       end
     end
   end

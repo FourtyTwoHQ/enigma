@@ -1,10 +1,10 @@
 module Enigma
 
-  class Categories
+  class Category
     attr_reader :id
     attr_reader :items
 
-    def initialize(cateogiroes: Array)
+    def initialize(hash: Hash)
       @id = hash['id']
       @items = hash['items']
     end
