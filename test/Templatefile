@@ -1,7 +1,7 @@
 enum Keys {
-    <% @categories.each do |category| %>
-        enum <%= category.id %> {
-            <% category.items.each do |item| %>
+    <% @secrets.each do |secret| %>
+        enum <%= secret.name.slice(0,1).capitalize + secret.name.slice(1..-1) %> {
+            <% secret.items.each do |item| %>
                 static let <%= item.property_name %> = <%= item.value %>
             <% end %>
         }

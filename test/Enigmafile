@@ -1,10 +1,14 @@
+access_key_id: MY_AWS_KEY
+secret_access_key: MY_AWS_SECRET
+aws_region: us-east-2
 template_path: .enigma/Templatefile
-output_path: Polaris/Source/Encrypted/Keys.swift
+output_path: Keys.swift
 environment: prod
 allow_missing_items: true
-categories:
-- id: Tealium
+secrets:
+- name: someRandomThirdParty
   items:
-  - key: some.aws.sm.key
-    property: key
-    
+  - key: apiKey
+    property_name: key
+  - key: apiSecret
+    property_name: secret

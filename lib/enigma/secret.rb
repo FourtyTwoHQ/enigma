@@ -1,11 +1,11 @@
 module Enigma
 
-  class Category
-    attr_reader :id
-    attr_reader :items
+  class Secret
+    attr_reader :name
+    attr_accessor :items
 
     def initialize(hash: Hash)
-      @id = hash['id']
+      @name = hash['name']
       @items = hash['items']
     end
   end
