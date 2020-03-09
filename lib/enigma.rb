@@ -61,7 +61,7 @@ module Enigma
         secret.items.each do |i|
           item = Enigma::Item.new(hash: i)
 
-          raise Thor::Error, Rainbow("Could not retrieve value for item #{item.name}").red if remote_values[item.key].nil? && !@config.allow_missing_items
+          raise Thor::Error, Rainbow("Could not retrieve value for item #{item.name}").red if remote_values[item.key].nil?
 
           item.value = remote_values[item.key]
           item_list.append(item)

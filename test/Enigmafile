@@ -4,7 +4,6 @@ aws_region: us-east-2
 template_path: .enigma/Templatefile
 output_path: Keys.swift
 environment: prod
-allow_missing_items: true
 secrets:
 - name: someRandomThirdParty
   items:

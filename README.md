@@ -44,9 +44,7 @@ The Enigmafile is used to tell Enigma what to do. It is a YAML file with a basic
   The relative path from the project root to the desired location of the file containing your application's passwords
 6. **environment**  
   Optional. If you've given your passwords an environment in Secrets Manager, add the environment here. Eg: `prod/someProvider`, enter `prod`. This will prefix **all** searches in Secrets Manager with the environment value and a trailing slash.
-7. **allow_missing_items**  
-  Optional. Will allow Enigma to continue if a secret listed in your Enigmafile is not found in Secrets Manager. Defaults to `false`.
-8. **secrets**  
+7. **secrets**  
   An array of secrets from Secrets Manager, and the item mapping for your template
 
 As an example, an `Enigmafile` could similar to this:
@@ -58,7 +56,6 @@ aws_region: us-east-2
 template_path: .enigma/Templatefile
 output_path: Keys.swift
 environment: prod
-allow_missing_items: true
 secrets:
 - name: ProviderA
   items:
