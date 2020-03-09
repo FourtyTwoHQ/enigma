@@ -1,4 +1,5 @@
-require File.join(__dir__, '..', 'test_helper')
+require 'enigma'
+require 'minitest/autorun'
 
 class ConfigTest < MiniTest::Test
   def test_parsesCorrectly
