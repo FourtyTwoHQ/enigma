@@ -1,9 +1,9 @@
 enum Keys {
     <% @secrets.each do |secret| %>
-        enum <%= secret.name.slice(0,1).capitalize + secret.name.slice(1..-1) %> {
-            <% secret.items.each do |item| %>
-                static let <%= item.property_name %> = <%= item.value %>
-            <% end %>
-        }
+    enum <%= secret.name.slice(0,1).capitalize + secret.name.slice(1..-1) %> {
+        <% secret.items.each do |item| %>
+        static let <%= item.property_name %> = <%= item.value %>
+        <% end %>
+    }
     <% end %>
 }
