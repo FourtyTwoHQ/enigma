@@ -44,10 +44,10 @@ module Enigma
 
       environment = @options[:environment] || @config.environment
 
-      client_config = Enigma::ClientConfig.new(:access_key_id => access_key_id,
-                                               :secret_access_key => secret_access_key,
-                                               :aws_region => aws_region,
-                                               :environment => environment)
+      client_config = Enigma::ClientConfig.new(access_key_id: access_key_id,
+                                               secret_access_key: secret_access_key,
+                                               aws_region: aws_region,
+                                               environment: environment)
       @client = Enigma::Client.new(config: client_config)
 
       secret_list = []
@@ -61,7 +61,7 @@ module Enigma
         secret.items.each do |i|
           item = Enigma::Item.new(hash: i)
 
-          raise Thor::Error, Rainbow("Could not").red if remote_values[item.key].nil? && !@config.allow_missing_items
+          raise Thor::Error, Rainbow("Could not retrieve value for item #{item.name}").red if remote_values[item.key].nil? && !@config.allow_missing_items
 
           item.value = remote_values[item.key]
           item_list.append(item)
@@ -71,9 +71,9 @@ module Enigma
         secret_list.append(secret)
       end
 
-      template = Enigma::Template.new(:secrets => secret_list,
-                                      :template_path => @config.template_path,
-                                      :output_path => @config.output_path)
+      template = Enigma::Template.new(secrets: secret_list,
+                                      template_path: @config.template_path,
+                                      output_path: @config.output_path)
       template.build
     end
 
