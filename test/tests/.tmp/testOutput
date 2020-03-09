@@ -1,0 +1,12 @@
+enum Keys {
+
+    enum Secret {
+
+        static let apiKey = "testApiKey"
+
+        static let apiSecret = "testApiSecret"
+
+    }
+
+
+}
