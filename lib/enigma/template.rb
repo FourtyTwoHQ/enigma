@@ -13,7 +13,7 @@ module Enigma
     end
 
     def render
-      ERB.new(File.read(@template_path)).result(binding)
+      ERB.new(File.read(@template_path), trim_mode: '<>').result(binding)
     end
 
     def build
