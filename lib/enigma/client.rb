@@ -21,7 +21,7 @@ module Enigma
 
     def make_secret_name(from: String)
       environment_prefix = ''
-      environment_prefix = "#{@config.environment}/" unless @config.environment.nil? && @config.environment.empty?
+      environment_prefix = "#{@config.environment}/" unless @config.environment.nil? || @config.environment.empty?
       "#{environment_prefix}#{from}"
     end
 
