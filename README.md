@@ -45,7 +45,7 @@ The Enigmafile is used to tell Enigma what to do. It is a YAML file with a basic
 6. **environment**  
   Optional. If you've given your passwords an environment in Secrets Manager, add the environment here. Eg: `prod/someProvider`, enter `prod`. This will prefix **all** searches in Secrets Manager with the environment value and a trailing slash.
 7. **allow_missing_items**  
-  Optional. Will allow Enigma to continue if a secret listed in your Enigmafile is not found in Secrets Manager
+  Optional. Will allow Enigma to continue if a secret listed in your Enigmafile is not found in Secrets Manager. Defaults to `false`.
 8. **secrets**  
   An array of secrets from Secrets Manager, and the item mapping for your template
 

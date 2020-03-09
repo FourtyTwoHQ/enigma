@@ -14,7 +14,7 @@ module Enigma
 
     def initialize(path: 'Enigmafile')
       config = YAML::load_file(path)
-      @allow_missing_items = config['allow_missing_items']
+      @allow_missing_items = config['allow_missing_items'] || false
       @access_key_id = config['access_key_id']
       @secret_access_key = config['secret_access_key']
       @aws_region = config['aws_region']
