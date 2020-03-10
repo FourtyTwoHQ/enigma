@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
+          run: bundle install
       - name: Unit Tests
         run: rake test
       - name: Upload coverage results    
