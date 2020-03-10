@@ -12,3 +12,9 @@ jobs:
           ruby-version: '2.6'
       - name: Unit Tests
         run: rake test
+      - name: Upload coverage results    
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
