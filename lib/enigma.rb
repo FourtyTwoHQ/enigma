@@ -71,10 +71,8 @@ module Enigma
         secret_list.append(secret)
       end
 
-      template = Enigma::Template.new(secrets: secret_list,
-                                      template_path: @config.template_path,
-                                      output_path: @config.output_path)
-      template.build
+      template = Enigma::Template.new(secrets: secret_list, template_path: @config.template_path)
+      template.generate(output_path: @config.output_path)
     end
 
     private
