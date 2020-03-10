@@ -12,14 +12,14 @@ module Enigma
     attr_reader :template_path
 
     def initialize(path: 'Enigmafile')
-      config = YAML::load_file(path)
-      @access_key_id = config['access_key_id']
-      @secret_access_key = config['secret_access_key']
-      @aws_region = config['aws_region']
-      @environment = config['environment']
-      @output_path = config['output_path']
-      @secrets = config['secrets']
-      @template_path = config['template_path']
+      config = YAML::load_file(path).transform_keys(&:to_sym)
+      @access_key_id = config[:access_key_id]
+      @secret_access_key = config[:secret_access_key]
+      @aws_region = config[:aws_region]
+      @environment = config[:environment]
+      @output_path = config[:output_path]
+      @secrets = config[:secrets]
+      @template_path = config[:template_path]
     end
   end
 

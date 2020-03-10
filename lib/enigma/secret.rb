@@ -5,8 +5,8 @@ module Enigma
     attr_accessor :items
 
     def initialize(hash: Hash)
-      @name = hash['name']
-      @items = hash['items']
+      @name = hash[:name]
+      @items = hash[:items]
     end
   end
 

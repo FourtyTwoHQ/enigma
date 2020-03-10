@@ -10,10 +10,10 @@ class TemplateTest < MiniTest::Test
 
     secrets = []
 
-    secret = Enigma::Secret.new(hash: { 'name' => 'Secret', 'items' => [] })
-    item1 = Enigma::Item.new(hash: { 'key' => 'apiKey', 'property_name' => 'key' })
+    secret = Enigma::Secret.new(hash: { name: 'Secret', items: [] })
+    item1 = Enigma::Item.new(hash: { key: 'apiKey', property_name: 'key' })
     item1.value = 'testApiKey'
-    item2 = Enigma::Item.new(hash: { 'key' => 'apiSecret', 'property_name' => 'secret' })
+    item2 = Enigma::Item.new(hash: { key: 'apiSecret', property_name: 'secret' })
     item2.value = 'testApiSecret'
     secret.items = [item1, item2]
     secrets.append(secret)
