@@ -25,9 +25,9 @@ class TemplateTest < MiniTest::Test
     template = Enigma::Template.new(secrets: secrets, 
                                     template_path: File.join(test_dir, 'Templatefile'),
                                     output_path: output_file)
-    template.build
+    content = template.render
 
-    assert_equal File.read(File.join(test_dir, 'Template.fixture')), File.read(output_file)
+    assert_equal File.read(File.join(test_dir, 'Template.fixture')), content
 
     FileUtils.rm_rf(tmp_dir)
   end
