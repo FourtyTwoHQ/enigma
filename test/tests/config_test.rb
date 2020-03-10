@@ -1,3 +1,4 @@
+require File.join(__dir__, '..', 'test_helper')
 require 'enigma/config'
 require 'minitest/autorun'
 

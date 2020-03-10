@@ -10,5 +10,13 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
+      - name: Bundle Install
+        run: gem install bundler:2.1.4 && bundle install
       - name: Unit Tests
         run: rake test
+      - name: Upload coverage results    
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
