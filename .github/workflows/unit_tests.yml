@@ -11,8 +11,7 @@ jobs:
         with:
           ruby-version: '2.6'
       - name: Bundle Install
-        run: gem install bundler:2.1.4
-        run: bundle install
+        run: gem install bundler:2.1.4 && bundle install
       - name: Unit Tests
         run: rake test
       - name: Upload coverage results    
