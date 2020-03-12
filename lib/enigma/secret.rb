@@ -5,6 +5,7 @@ module Enigma
     attr_accessor :items
 
     def initialize(hash: Hash)
+      hash = hash.transform_keys(&:to_sym)
       @name = hash[:name]
       @items = hash[:items]
     end
