@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    enigma-gen (0.1.0)
+    lyra (0.1.0)
       aws-sdk-secretsmanager (~> 1.32.0)
       json (~> 2.3.0)
       rainbow (~> 3.0.0)
@@ -13,7 +13,7 @@ GEM
   specs:
     aws-eventstream (1.0.3)
     aws-partitions (1.281.0)
-    aws-sdk-core (3.90.1)
+    aws-sdk-core (3.91.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -45,14 +45,14 @@ GEM
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.3)
-    unicode-display_width (1.6.1)
+    unicode-display_width (1.7.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 2.0)
-  enigma-gen!
+  lyra!
   minitest (~> 5.0)
   pry-byebug (~> 3.7.0)
   rake (~> 13.0)

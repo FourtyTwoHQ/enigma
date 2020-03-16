@@ -1,7 +1,7 @@
 access_key_id: MY_AWS_KEY
 secret_access_key: MY_AWS_SECRET
 aws_region: us-east-2
-template_path: .enigma/Templatefile
+template_path: .lyra/Templatefile
 output_path: Keys.swift
 environment: prod
 secrets:

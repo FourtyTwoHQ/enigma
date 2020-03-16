@@ -1,4 +1,4 @@
-module Enigma
+module Lyra
   class ClientConfig
     attr_reader :access_key_id
     attr_reader :secret_access_key

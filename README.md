@@ -1,14 +1,14 @@
-# Enigma
+# Lyra
 
-Enigma is a Ruby gem that fetches your application's passwords from AWS Secrets Manager and builds a file containing them using a `Templatefile` as the guide. This results in a simple and platform-agnostic approach to rendering your application password in to a compilable file.
+Lyra is a Ruby gem that fetches your application's passwords from AWS Secrets Manager and builds a file containing them using a `Templatefile` as the guide. This results in a simple and platform-agnostic approach to rendering your application password in to a compilable file.
 
 ## Installation
 
-`gem install enigma-gen`
+`gem install lyra`
 
 ## Usage
 
-Once the gem is installed, simply running `enigma exec` is enough to get you started. However, should you want to pass in specific command line options instead of specifying values in your `Enigmafile`, you can do that as well.
+Once the gem is installed, simply running `lyra exec` is enough to get you started. However, should you want to pass in specific command line options instead of specifying values in your `Lyrafile`, you can do that as well.
 
 ```
 --access_key_id [String] Your AWS Access Key ID
@@ -23,19 +23,19 @@ Once the gem is installed, simply running `enigma exec` is enough to get you sta
 --environment [String] Your specified secret environment
 ```
 ```
---config [String] Path to your Enigmafile
+--config [String] Path to your Lyrafile
 ```
 
-**Note**: Parameters passed in via CLI take precedence over those listed in your `Enigmafile`.
+**Note**: Parameters passed in via CLI take precedence over those listed in your `Lyrafile`.
 
-## Enigmafile
+## Lyrafile
 
-The Enigmafile is used to tell Enigma what to do. It is a YAML file with a basic structure and contains the following properties:
+The Lyrafile is used to tell Lyra what to do. It is a YAML file with a basic structure and contains the following properties:
 
 1. **access_key_id**  
-  The environment variable that your `AWS_ACCESS_KEY_ID` is associated with. Do **not** commit your actual access key ID to the Enigmafile
+  The environment variable that your `AWS_ACCESS_KEY_ID` is associated with. Do **not** commit your actual access key ID to the Lyrafile
 2. **secret_access_key**  
-  The environment variable that your `AWS_SECRET_ACCESS_KEY` is associated with. Do **not** commit your actual secret access key to the Enigmafile
+  The environment variable that your `AWS_SECRET_ACCESS_KEY` is associated with. Do **not** commit your actual secret access key to the Lyrafile
 3. **aws_region**  
   The AWS region that your Secrets Manager instance is in. Eg: `us-east-2`
 4. **template_path**  
@@ -47,13 +47,13 @@ The Enigmafile is used to tell Enigma what to do. It is a YAML file with a basic
 7. **secrets**  
   An array of secrets from Secrets Manager, and the item mapping for your template
 
-As an example, an `Enigmafile` could similar to this:
+As an example, an `Lyrafile` could similar to this:
 
 ```yml
 access_key_id: MY_AWS_KEY_ENV_VAR
 secret_access_key: MY_AWS_SECRET_ENV_VAR
 aws_region: us-east-2
-template_path: .enigma/Templatefile
+template_path: .lyra/Templatefile
 output_path: Keys.swift
 environment: prod
 secrets:
@@ -69,7 +69,7 @@ secrets:
     property_name: password
 ```
 
-For more information about the `secrets` portion of the `Enigmafile`, see below.
+For more information about the `secrets` portion of the `Lyrafile`, see below.
 
 ## Templatefile
 
@@ -123,7 +123,7 @@ AWS Secrets Manager allows users to combine multiple key-value pairs under a sin
 }
 ```
 
-In the `Enigmafile` we would use the `secret_name` as the parent secret name, and the individual `secret_values` would be `item`s for that `secret`. As an example, the above would translate to the following `Enigmafile` format:
+In the `Lyrafile` we would use the `secret_name` as the parent secret name, and the individual `secret_values` would be `item`s for that `secret`. As an example, the above would translate to the following `Lyrafile` format:
 
 ```yml
 environment: prod
@@ -138,4 +138,4 @@ secrets:
 
 The `property_name` attribute of the `item` only pertains to how the item is rendered in the template. Specifically, it is the name of the property that will be used to hold the secret value. You can give the `property_name` attribute any value you would like.
 
-**Remember**: try to prefix all of your secrets with your environment in  Secrets Manager, and use the `environment` attribute of the `Enigmafile` / CLI param to automatically append the `environment` to every secret fetch.
+**Remember**: try to prefix all of your secrets with your environment in  Secrets Manager, and use the `environment` attribute of the `Lyrafile` / CLI param to automatically append the `environment` to every secret fetch.

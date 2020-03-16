@@ -1,9 +1,9 @@
 require 'aws-sdk-secretsmanager'
 
-module Enigma
+module Lyra
   class Client
 
-    def initialize(config: Enigma::ClientConfig)
+    def initialize(config: Lyra::ClientConfig)
       @config = config
       credentials = Aws::Credentials.new(@config.access_key_id, @config.secret_access_key)
       @client = Aws::SecretsManager::Client.new(credentials: credentials, region: @config.aws_region)
