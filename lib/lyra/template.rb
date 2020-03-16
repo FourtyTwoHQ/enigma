@@ -1,6 +1,6 @@
 require 'erb'
 
-module Enigma
+module Lyra
   class Template
     attr_reader :secrets
     attr_reader :template_path

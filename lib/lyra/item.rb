@@ -1,4 +1,4 @@
-module Enigma
+module Lyra
 
   class Item
     attr_reader :key

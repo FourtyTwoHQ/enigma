@@ -1,4 +1,4 @@
-module Enigma
+module Lyra
 
   class Secret
     attr_reader :name

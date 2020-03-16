@@ -1,6 +1,6 @@
 require 'yaml'
 
-module Enigma
+module Lyra
 
   class Config
     attr_reader :access_key_id
@@ -11,7 +11,7 @@ module Enigma
     attr_reader :secrets
     attr_reader :template_path
 
-    def initialize(path: 'Enigmafile')
+    def initialize(path: 'Lyrafile')
       config = YAML::load_file(path).transform_keys(&:to_sym)
       @access_key_id = config[:access_key_id]
       @secret_access_key = config[:secret_access_key]

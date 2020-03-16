@@ -1,21 +1,21 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'enigma/version'
+require 'lyra/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'enigma-gen'
-  spec.version       = Enigma::VERSION
+  spec.name          = 'lyra'
+  spec.version       = Lyra::VERSION
   spec.authors       = ['Mat Cartmill']
-  spec.email         = ['mat.cartmill@gmail.com']
+  spec.email         = ['mat@hellomustard.com']
 
   spec.summary       = %q{A gem for pulling secrets from AWS Secrets Manager.}
   spec.description   = %q{Retrieves secrets to from AWS Secrets Manager and creates a file matching your template with your secrets populated.}
-  spec.homepage      = 'https://github.com/matcartmill/enigma'
+  spec.homepage      = 'https://github.com/HelloMustard/lyra'
   spec.license       = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/FourtyTwoHQ/enigma'
-  spec.metadata['changelog_uri'] = 'https://github.com/FourtyTwoHQ/enigma'
+  spec.metadata['source_code_uri'] = 'https://github.com/HelloMustard/lyra'
+  spec.metadata['changelog_uri'] = 'https://github.com/HelloMustard/lyra'
 
   spec.required_ruby_version = '>= 2.6'
 
